@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('animals', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->string("animalType");
             $table->double("weight", 8, 2);
-            $table->dateTime("DOB")->nullable();
+            $table->dateTime("dateOfBirth")->nullable();
             $table->timestamps();
         });
     }

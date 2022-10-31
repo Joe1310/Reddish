@@ -15,10 +15,20 @@ class AnimalTableSeeder extends Seeder
      */
     public function run()
     {
-        // Hardcode one animal
+        // Hardcode two animals
         $a = new Animal;
         $a->name = "Joe";
+        $a->animalType = "Chad";
         $a->weight = 100.0;
         $a->save();
+
+        $b = new Animal;
+        $b->name = "Jacob";
+        $b->animalType = "Chimp";
+        $b->weight = 500.0;
+        $b->save();
+
+        // Use faker to generate 50 animals
+        Animal::factory()->count(50)->create();
     }
 }
