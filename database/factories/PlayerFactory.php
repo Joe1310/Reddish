@@ -20,7 +20,8 @@ class PlayerFactory extends Factory
             // create a random player
             "alias" => fake()->userName(),
             "position" => fake()->numberBetween($min = 1, $max = 5),
-            "rank" => fake()->randomElement(["immortal", "divine", "ancient", "legend", "archon", "crusader", "guardian", "herald", "uncalibrated"])
+            "rank" => fake()->randomElement(["immortal", "divine", "ancient", "legend", "archon", "crusader", "guardian", "herald", "uncalibrated"]),
+            "country" => fake()->country()
         ];
     }
 }

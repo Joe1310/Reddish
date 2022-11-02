@@ -20,6 +20,7 @@ class PlayerTableSeeder extends Seeder
         $a->alias = "HorridJoe";
         $a->position = 2;
         $a->rank = "divine";
+        $a->country = "England";
         $a->save();
 
         // use faker to generate 50 players

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("alias")->unique();
             $table->integer("position");
             $table->enum("rank", ["immortal", "divine", "ancient", "legend", "archon", "crusader", "guardian", "herald", "uncalibrated"]);
+            $table->string("country");
             $table->timestamps();
         });
     }
