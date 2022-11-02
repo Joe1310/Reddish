@@ -21,9 +21,7 @@ class PlayerTableSeeder extends Seeder
         $a->position = 2;
         $a->rank = "divine";
         $a->country = "England";
+        $a->user_id = 1; // Joe
         $a->save();
-
-        // use faker to generate 50 players
-        Player::factory()->count(50)->create();
     }
 }
