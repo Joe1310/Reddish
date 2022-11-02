@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Player;
+use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -24,6 +25,10 @@ class UserTableSeeder extends Seeder
         $a->save();
 
         // use faker to generate 50 users
-        User::factory()->has(Player::factory()->count(1))->count(50)->create();
+        User::factory()->has(
+            Player::factory()->has(
+                Post::factory()->count(2))
+                ->count(1))
+                ->count(50)->create();
     }
 }
