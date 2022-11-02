@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('animals', function (Blueprint $table) {
+        Schema::create('players', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("animalType");
-            $table->double("weight", 8, 2);
-            $table->dateTime("dateOfBirth")->nullable();
+            $table->string("alias")->unique();
+            $table->integer("position");
+            $table->enum("rank", ["immortal", "divine", "ancient", "legend", "archon", "crusader", "guardian", "herald", "uncalibrated"]);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('animals');
+        Schema::dropIfExists('players');
     }
 };
