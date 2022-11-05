@@ -18,4 +18,9 @@ class Player extends Model
     {
         return $this->hasMany(Post::class);
     }
+
+    public function comments()
+    {
+        return $this->hasManyThrough(Comment::class, Post::class, 'player_id', 'post_id', 'id', 'id');
+    }
 }

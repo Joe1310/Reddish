@@ -11,7 +11,11 @@ class Post extends Model
 
     public function player()
     {
-    return $this->belongsTo(Player::class);
+        return $this->belongsTo(Player::class);
     }
 
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

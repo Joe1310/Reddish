@@ -19,7 +19,7 @@ class PostTableSeeder extends Seeder
         $a = new Post;
         $a->title = "First Post";
         $a->content = "This is my first post :)";
-        $a->player_id = 1;
+        $a->player_id = 51;
         $a->save();
     }
 }

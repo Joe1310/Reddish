@@ -21,7 +21,7 @@ class PlayerTableSeeder extends Seeder
         $a->position = 2;
         $a->rank = "divine";
         $a->country = "England";
-        $a->user_id = 1; // Joe
+        $a->user_id = 51; // Joe
         $a->save();
     }
 }
