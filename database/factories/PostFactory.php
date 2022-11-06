@@ -18,7 +18,7 @@ class PostFactory extends Factory
     {
         return [
             "title" => fake()->word(),
-            "content" => fake()->sentence()
+            "content" => fake()->realText($maxNBChars=145)
         ];
     }
 }

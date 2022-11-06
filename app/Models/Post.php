@@ -14,8 +14,13 @@ class Post extends Model
         return $this->belongsTo(Player::class);
     }
 
-    public function comment()
+    public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function playersCommented()
+    {
+        return $this->hasManyThrough(Player::class, Comment::class);
     }
 }
