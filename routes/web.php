@@ -19,6 +19,7 @@ Route::get('/home', [PostController::class, 'index']);
 
 Route::get('/posts/{id}', [PostController::class, 'show']);
 
+Route::get('/players/{id}', [PlayerController::class, 'show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

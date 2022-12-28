@@ -49,6 +49,9 @@ class PlayerController extends Controller
     public function show($id)
     {
         //
+        $player = Player::find($id);
+        $posts = $player->posts()->paginate(10);
+        return view('players.show', ['player' => $player, 'posts' => $posts]);
     }
 
     /**

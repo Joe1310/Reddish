@@ -2,14 +2,6 @@
 <link rel="stylesheet" href="/css/navbar.css">
 <!-- Header -->
 <header>
-  <style>
-body {
-  background-image: url('fake reddit.png');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 0% 100%;
-}
-  </style>
   <nav class="navbar navbar-dark bg-primary">
     <a class="navbar-brand" href="/home">Reddit-ish</a>
     <div class="collapse navbar-collapse" id="navbarNav">
