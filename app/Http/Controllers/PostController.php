@@ -14,8 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-        $posts = Post::all();
+        // paginate the all the posts into groups of 10
+        $posts = Post::paginate(10);
+        // render the view of all the posts
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -48,7 +49,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        // Find the post with the given id
+        $post = Post::find($id);
+
+        // Render the view of the post
+        return view('posts.show', ['post' => $post]);
     }
 
     /**
