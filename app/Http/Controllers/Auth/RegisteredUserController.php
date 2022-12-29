@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Models\Player;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,8 +48,16 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        $player = new Player;
+        $player->alias = $request['alias'];
+        $player->position = $request['position'];
+        $player->rank = $request['rank'];
+        $player->country = $request['country'];
+        
+        $user->player()->save($player);
+
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->intended('/home');
     }
 }
