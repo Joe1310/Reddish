@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 <head>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
@@ -21,6 +22,16 @@
             <div class="player-name">
                 <b>{{ $post->player->alias }} - {{ ucfirst($post->player->rank) }}</b> 
             </div>
+            </div>
+            <div style="text-align: left; display: flex; flex-direction: row;">
+                @if (Auth::user()->id === $post->player_id)
+                <form method="POST" action="/posts/{{ $post->id }}">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                <a href="/posts/{{ $post->id }}/edit" class="btn btn-primary" style="margin-left: 10px;">Edit</a>
+                @endif
             </div>
         </li>
         @endforeach

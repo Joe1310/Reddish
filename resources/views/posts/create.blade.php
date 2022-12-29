@@ -6,6 +6,7 @@
     <h1>Create a New Post</h1>
     <form method="POST" action="/posts">
         @csrf
+        <input type="hidden" name="player_id" value="{{ Auth::id() }}">
         <div class="form-inputbox">
             <label for="title">Title</label>
             <textarea type="form-control" class="form-control" id="title" name="title" cols="100" placeholder="Enter title"></textarea>

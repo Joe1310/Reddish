@@ -45,9 +45,10 @@ class PostController extends Controller
       $post = new Post();
       $post->title = $request->input('title');
       $post->content = $request->input('content');
+      $post->player_id = $request->input('player_id');
       $post->save();
     
-      return redirect()->route('posts.index')->with('success', 'Post created successfully');
+      return redirect()->intended('/home')->with('success', 'Post created successfully');
     }
 
     /**
