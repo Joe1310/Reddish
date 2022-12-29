@@ -4,6 +4,11 @@
 </head>
 @section('title', 'Posts Index')
 @section('content')
+    @auth
+    <div class="mx-auto text-center mt-4">
+    <a href="/posts/create" class="btn btn-outline-primary">Create Post</a>
+    </div>
+    @endauth
     <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;  align-items: center;">
         @foreach ($posts as $post)
         <li style="margin-bottom: 20px;">
@@ -14,7 +19,7 @@
             <br>
             <br>
             <div class="player-name">
-                <b>{{ $post->player->alias }} - {{ ucfirst($post->player->rank) }}<b> 
+                <b>{{ $post->player->alias }} - {{ ucfirst($post->player->rank) }}</b> 
             </div>
             </div>
         </li>
