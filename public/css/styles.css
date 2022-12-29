@@ -6,12 +6,16 @@ ul {
     list-style-type: none;
     display: flex;
     justify-content: center;
-  }
+}
 
 li{
     margin-bottom: 10px;
 }
   
+.btn-outline-primary {
+    margin-bottom: 20px;
+}
+
 .post-box {
     position: relative;
     border: 1px solid black;
@@ -33,4 +37,4 @@ li{
     position: absolute;
     bottom: 0;
     right: 0;
-  }
+}
