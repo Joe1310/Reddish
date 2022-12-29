@@ -6,7 +6,7 @@
 @section('content')
     @auth
     <div class="mx-auto text-center mt-4">
-    <a href="/posts/create" class="btn btn-outline-primary">Create Post</a>
+        <a href="/posts/create" class="btn btn-outline-primary">Create Post</a>
     </div>
     @endauth
     <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;  align-items: center;">

@@ -17,9 +17,17 @@ use App\Http\Controllers\PostController;
 
 Route::get('/home', [PostController::class, 'index']);
 
+Route::post('/posts', [PostController::class, 'store']);
+
+Route::get('/posts/create', [PostController::class, 'create']);
+
 Route::get('/posts/{id}', [PostController::class, 'show']);
 
 Route::get('/players/{id}', [PlayerController::class, 'show']);
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
