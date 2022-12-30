@@ -14,7 +14,7 @@
             <br>
             <br>
             <div class="player-name">
-                <b>{{ $post->player->alias }} - {{ ucfirst($post->player->rank) }}<b> 
+                <b>{{ $post->player->alias }} - {{ ucfirst($post->player->rank) }}</b> 
             </div>
             </div>
             <div style="text-align: left; display: flex; flex-direction: row;">
