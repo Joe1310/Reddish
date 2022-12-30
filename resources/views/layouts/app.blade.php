@@ -12,7 +12,7 @@
 <!-- Header -->
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/home">Reddit-ish</a>
+    <a class="navbar-brand" href="/home">Reddish</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto align-items-center">
         <li class="nav-item active">

@@ -3,6 +3,10 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 @section('title', 'Player Profile')
+<h1 style="align-self: center">{{$player->alias}}'s profile</h1>
+<div class="profile-picture-box">
+    <img src="{{ asset($player->profile_picture) }}" alt="{{ $player->alias }}'s profile picture" class="profile-picture">
+</div>
 @section('content')
     <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;  align-items: center;">
         @foreach ($posts as $post)

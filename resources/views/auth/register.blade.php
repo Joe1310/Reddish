@@ -50,6 +50,15 @@
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
 
+            <!-- Profile Picture -->
+            <div class="mt-4">
+                <x-input-label for="profile_picture" :value="__('Profile Picture')" />
+
+                <input type="file" id="profile_picture" class="block mt-1 w-full" name="profile_picture" accept="image/*">
+
+                <x-input-error :messages="$errors->get('profile_picture')" class="mt-2" />
+            </div>
+
             <!-- Alias -->
             <div class="mt-4">
                 <x-input-label for="alias" :value="__('Alias')" />

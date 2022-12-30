@@ -45,3 +45,21 @@ body {
     align-items: center;
     margin-bottom: 10px;
   }
+
+  .profile-picture-box {
+    margin: auto;
+    margin-top: 20;
+    margin-bottom: 20;
+    border: solid #ccc;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .profile-picture {
+    max-width: 200px;
+    max-height: 200px;
+  }
