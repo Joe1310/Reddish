@@ -42,14 +42,17 @@
     </div>
   </nav>
 </header>
+
 <!-- Content -->
 <body>
-    @yield('content')
+  @yield('content')
 </body>
+
 <!-- Footer -->
 <footer class="bg-primary py-3 mt-5">
-    <div class="container text-center">
-        <p class="text-white m-0">Some sort of copyright thing</p>
-    </div>
+  <div class="container text-center">
+      <p class="text-white m-0">Some sort of copyright thing</p>
+  </div>
 </footer>
+
 </html>

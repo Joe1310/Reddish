@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 <head>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
@@ -31,7 +30,7 @@
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
-                    <a href="/posts/{{ $post->id }}/edit" class="btn btn-primary" style="margin-left: 10px;">Edit</a>
+                    <a href="{{route('posts.edit', $post->id)}}" class="btn btn-primary" style="margin-left: 10px;">Edit</a>
                     @endif
                 @endif
             </div>

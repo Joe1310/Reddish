@@ -15,21 +15,23 @@ use App\Http\Controllers\PostController;
 |
 */
 
+Route::redirect('/', '/home');
+
 Route::get('/home', [PostController::class, 'index'])->name('posts.index');
 
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
+Route::patch('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
 
 Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
-Route::get('/players/{id}', [PlayerController::class, 'show']);
+Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
 
-
-
-
+Route::get('/players/{id}', [PlayerController::class, 'show'])->name('players.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
