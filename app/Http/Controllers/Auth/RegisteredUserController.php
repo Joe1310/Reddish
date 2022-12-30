@@ -54,6 +54,13 @@ class RegisteredUserController extends Controller
         $player->rank = $request['rank'];
         $player->country = $request['country'];
         
+        if ($request->hasFile('profile_picture')) {
+            $profilePicturePath = $request->file('profile_picture')->store('public/profile_pictures');
+            $player->profile_picture = $profilePicturePath;
+        } else{
+            $player->profile_picture = "/profile_pictures/default.png";
+        }
+        
         $user->player()->save($player);
 
         Auth::login($user);

@@ -22,6 +22,7 @@ class PlayerTableSeeder extends Seeder
         $a->rank = "divine";
         $a->country = "England";
         $a->user_id = 51; // Joe
+        $a->profile_picture = "/profile_pictures/default.png";
         $a->save();
     }
 }

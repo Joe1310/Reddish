@@ -20,9 +20,10 @@ return new class extends Migration
             $table->enum("rank", ["immortal", "divine", "ancient", "legend",
              "archon", "crusader", "guardian", "herald", "uncalibrated"]);
             $table->string("country");
+            $table->string("profile_picture")->default("/profile_pictures/default.png");
             $table->bigInteger("user_id")->unsigned();
             $table->timestamps();
-
+    
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }

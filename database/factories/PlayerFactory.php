@@ -22,7 +22,8 @@ class PlayerFactory extends Factory
             "position" => fake()->numberBetween($min = 1, $max = 5),
             "rank" => fake()->randomElement(["immortal", "divine", "ancient",
              "legend", "archon", "crusader", "guardian", "herald", "uncalibrated"]),
-            "country" => fake()->country()
+            "country" => fake()->country(),
+            "profile_picture" => "profile_pictures/default.png"
         ];
     }
 }
