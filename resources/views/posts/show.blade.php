@@ -17,13 +17,15 @@
             </div>
             </div>
             <div style="text-align: left; display: flex; flex-direction: row;">
-                @if (Auth::user()->id === $post->player_id)
-                <form method="POST" action="/posts/{{ $post->id }}">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-                <a href="/posts/{{ $post->id }}/edit" class="btn btn-primary" style="margin-left: 10px;">Edit</a>
+                @if (Auth::check())
+                    @if (Auth::user()->id === $post->player_id)
+                    <form method="POST" action="/posts/{{ $post->id }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    <a href="/posts/{{ $post->id }}/edit" class="btn btn-primary" style="margin-left: 10px;">Edit</a>
+                    @endif
                 @endif
             </div>
         </li>
