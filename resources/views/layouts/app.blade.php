@@ -13,9 +13,6 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="/home">Reddit-ish</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto align-items-center">
         <li class="nav-item active">
@@ -28,6 +25,9 @@
             @csrf
             <button type="submit" class="btn btn-link nav-link">Logout</button>
           </form>
+        </li>
+        <li class="nav-item">
+          <a href="/players/{{Auth::id()}}" class="btn btn-link nav-link">My Profile</a>
         </li>
       @else
         <!-- Display login and registration buttons for guest users -->
