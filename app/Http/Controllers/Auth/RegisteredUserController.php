@@ -34,6 +34,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -55,10 +56,15 @@ class RegisteredUserController extends Controller
         $player->country = $request['country'];
         
         if ($request->hasFile('profile_picture')) {
-            $profilePicturePath = $request->file('profile_picture')->store('public/profile_pictures');
-            $player->profile_picture = $profilePicturePath;
+            $file = $request->file('profile_picture');
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $fileLocation = ('profile_pictures/' . $filename);
+            $storagePath = storage_path('app/public/profile_pictures');
+            $file->move($storagePath, $filename);
+            $player->profile_picture = $fileLocation;
         } else{
             $player->profile_picture = "/profile_pictures/default.png";
+            dd($player);
         }
         
         $user->player()->save($player);

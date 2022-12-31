@@ -104,8 +104,12 @@ class PlayerController extends Controller
         $player->user_id = $request->user_id;
     
         if ($request->hasFile('profile_picture')) {
-            $profilePicturePath = $request->file('profile_picture')->store('public/profile_pictures');
-            $player->profile_picture = $profilePicturePath;
+            $file = $request->file('profile_picture');
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $fileLocation = ('profile_pictures/' . $filename);
+            $storagePath = storage_path('app/public/profile_pictures');
+            $file->move($storagePath, $filename);
+            $player->profile_picture = $fileLocation;
         }
     
         $player->save();

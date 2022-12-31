@@ -12,7 +12,7 @@
     @endif
 @endif
 <div class="profile-picture-box">
-    <img src="{{ asset($player->profile_picture) }}" alt="{{ $player->alias }}'s profile picture" class="profile-picture">
+    <img src="{{ asset('storage/' . $player->profile_picture) }}" alt="{{ $player->alias }}'s profile picture" class="profile-picture">
 </div>
 @section('content')
     <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;  align-items: center;">

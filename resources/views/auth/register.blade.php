@@ -6,7 +6,7 @@
             </a>
         </x-slot>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             @csrf
 
             <!-- Name -->
@@ -53,9 +53,7 @@
             <!-- Profile Picture -->
             <div class="mt-4">
                 <x-input-label for="profile_picture" :value="__('Profile Picture')" />
-
-                <input type="file" id="profile_picture" class="block mt-1 w-full" name="profile_picture" accept="image/*">
-
+                <input id="profile_picture" type="file" class="block mt-1 w-full" name="profile_picture">
                 <x-input-error :messages="$errors->get('profile_picture')" class="mt-2" />
             </div>
 
