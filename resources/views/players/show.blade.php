@@ -4,6 +4,13 @@
 </head>
 @section('title', 'Player Profile')
 <h1 style="align-self: center">{{$player->alias}}'s profile</h1>
+@if (Auth::check())
+    @if (Auth::user()->id === $player->user_id)
+        <div class="d-flex justify-content-center">
+            <a href="/players/{{ $player->id }}/edit" class="btn btn-primary">Edit Profile</a>
+        </div>
+    @endif
+@endif
 <div class="profile-picture-box">
     <img src="{{ asset($player->profile_picture) }}" alt="{{ $player->alias }}'s profile picture" class="profile-picture">
 </div>

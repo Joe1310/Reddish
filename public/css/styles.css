@@ -63,3 +63,8 @@ body {
     max-width: 200px;
     max-height: 200px;
   }
+
+  .center-container {
+    width: 300px;
+    margin: 0 auto;
+}

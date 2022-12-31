@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class PlayerController extends Controller
@@ -62,7 +63,9 @@ class PlayerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $player = Player::findOrFail($id);
+    
+        return view('players.edit', compact('player'));
     }
 
     /**
@@ -74,9 +77,42 @@ class PlayerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $player = Player::findOrFail($id);
 
+        $validationRules = [
+            'position' => ['sometimes', 'integer'],
+            'rank' => ['sometimes', 'in:immortal,divine,ancient,legend,archon,crusader,guardian,herald,uncalibrated'],
+            'country' => ['sometimes', 'string', 'max:255'],
+            'profile_picture' => ['sometimes', 'image'],
+        ];
+    
+        if ($request->filled('alias')) {
+            if ($request->alias != $player->alias) {
+                $validationRules['alias'] = ['string', 'max:255', Rule::unique('players')];
+                $player->alias = $request->alias;
+            } 
+        } else{
+            $player->alias = $player->alias;
+        }
+    
+        $request->validate($validationRules);
+    
+        $player->position = $request->filled('position') ? $request->position : $player->position;
+        $player->rank = $request->filled('rank') ? $request->rank : $player->rank;
+        $player->country = $request->filled('country') ? $request->country : $player->country;
+        
+        $player->user_id = $request->user_id;
+    
+        if ($request->hasFile('profile_picture')) {
+            $profilePicturePath = $request->file('profile_picture')->store('public/profile_pictures');
+            $player->profile_picture = $profilePicturePath;
+        }
+    
+        $player->save();
+    
+        return redirect()->route('players.show', ['id' => $id])->with('success', 'Profile updated successfully');
+    }
+    
     /**
      * Remove the specified resource from storage.
      *

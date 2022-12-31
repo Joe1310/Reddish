@@ -33,8 +33,11 @@ Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edi
 
 Route::get('/players/{id}', [PlayerController::class, 'show'])->name('players.show');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/players/{id}/edit', [PlayerController::class, 'edit'])->name('players.edit');
+
+Route::patch('players/{id}', [PlayerController::class, 'update'])->name('players.update');
+
+Route::redirect('/dashboard', '/home');
+
 
 require __DIR__.'/auth.php';
