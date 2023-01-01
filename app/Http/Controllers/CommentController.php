@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,6 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::paginate(10);
-        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -27,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-      return view('posts.create');
+        //
     }
 
     /**
@@ -38,18 +35,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-      $request->validate([
-        'title' => 'required|max:255',
-        'content' => 'required',
-      ]);
+        $request->validate([
+            'comment' => ['required', 'string', 'max:255'],
+            'post_id' => ['required', 'integer'],
+            'player_id' => ['required', 'integer']
+        ]);
+        
+        $comment = new Comment();
+        $comment->comment = $request->comment;
+        $comment->post_id = $request->post_id;
+        $comment->player_id = $request->player_id;
+        $comment->save();
     
-      $post = new Post();
-      $post->title = $request->input('title');
-      $post->content = $request->input('content');
-      $post->player_id = $request->input('player_id');
-      $post->save();
-    
-      return redirect()->intended('/home')->with('success', 'Post created successfully');
+        return response()->json(['comment' => $comment], 200);
     }
 
     /**
@@ -61,9 +59,6 @@ class PostController extends Controller
     public function show($id)
     {
         //
-        $post = Post::find($id);
-        $comments = Comment::where('post_id', $id)->get();
-        return view('posts.show', ['post' => $post, 'comments' => $comments]);
     }
 
     /**
@@ -74,8 +69,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-      $post = Post::find($id);
-      return view('posts.edit', ['post' => $post]);
+        //
     }
 
     /**
@@ -87,20 +81,8 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required|max:255',
-            'content' => 'required',
-        ]);
-    
-        $post = Post::find($id);
-    
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
-        $post->save();
-    
-        return redirect()->route('posts.index')->with('success', 'Post updated successfully');
+        //
     }
-    
 
     /**
      * Remove the specified resource from storage.
@@ -110,8 +92,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::findOrFail($id);
-        $post->delete();
-        return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
+        //
     }
 }

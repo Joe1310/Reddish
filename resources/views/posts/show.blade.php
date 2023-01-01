@@ -30,4 +30,44 @@
             </div>
         </li>
     </ul>
+    <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;  align-items: center;">
+        <h5>Comments</h5>
+        @foreach ($comments as $comment)
+            <li class='comment-box'>
+                <div class = 'comment'>
+                {{ $comment->comment }}
+                <br>
+                <div style="cursor: pointer" onclick="window.location.href='/players/{{ $comment->player->id }}'">
+                    <b>{{ $comment->player->alias }} - {{ ucfirst($comment->player->rank) }}</b>
+                </div>
+                </div>
+            </li>
+        @endforeach
+    </ul>
+    @if (Auth::check())
+        <form id="comment-form">
+            @csrf
+            <textarea name="comment"></textarea>
+            <input type="hidden" name="post_id" value="{{ $post->id }}">
+            <input type="hidden" name="player_id" value="{{ auth()->user()->player->id }}">
+            <button type="submit">Submit</button>
+        </form>
+    @endif
+    
+    <script>
+        $(document).ready(function() {
+            $('#comment-form').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/comments',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        location.reload();
+                    }
+                });
+            });
+        });
+    </script>
+
 @endsection

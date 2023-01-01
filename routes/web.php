@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,8 @@ Route::get('/players/{id}', [PlayerController::class, 'show'])->name('players.sh
 Route::get('/players/{id}/edit', [PlayerController::class, 'edit'])->name('players.edit');
 
 Route::patch('players/{id}', [PlayerController::class, 'update'])->name('players.update');
+
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
 Route::redirect('/dashboard', '/home');
 
