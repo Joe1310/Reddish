@@ -21,7 +21,7 @@ body {
     border: 1px solid black;
     padding: 10px;
     width: 500px;
-    height: 300px;
+    min-height: 300px;
     cursor: pointer;
   }
   
@@ -30,7 +30,7 @@ body {
     border: 1px solid black;
     padding: 10px;
     width: 500px;
-    height: 300px;
+    min-height: 300px;
   }
   
   .player-name {
@@ -76,7 +76,7 @@ body {
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
 }
 
 .comment-list{
@@ -84,4 +84,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.picture{
+  max-width: 300;
+  max-height: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }

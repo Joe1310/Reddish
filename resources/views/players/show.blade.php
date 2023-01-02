@@ -21,6 +21,10 @@
             <div class="post-box" onclick="window.location.href='/posts/{{ $post->id }}'">
             <big><b>{{ ucfirst($post->title) }}</b></big>
             <br>
+            @if ($post->picture)
+                <img src="{{ asset('storage/' . $post->picture) }}" class="picture">
+            @endif
+            <br>
             {{ Str::limit($post->content, 500) }}
             <br>
             <br>

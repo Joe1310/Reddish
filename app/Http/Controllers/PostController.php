@@ -39,11 +39,21 @@ class PostController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'title' => 'required|max:255',
-        'content' => 'required',
+        'title' => ['required', 'max:255'],
+        'content' => ['required', 'string'],
       ]);
-    
+
       $post = new Post();
+
+      if ($request->hasFile('picture')) {
+        $file = $request->file('picture');
+        $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+        $fileLocation = ('pictures/' . $filename);
+        $storagePath = storage_path('app/public/pictures');
+        $file->move($storagePath, $filename);
+        $post->picture = $fileLocation;
+    }
+
       $post->title = $request->input('title');
       $post->content = $request->input('content');
       $post->player_id = $request->input('player_id');
@@ -93,7 +103,16 @@ class PostController extends Controller
         ]);
     
         $post = Post::find($id);
-    
+
+        if ($request->hasFile('picture')) {
+          $file = $request->file('picture');
+          $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+          $fileLocation = ('pictures/' . $filename);
+          $storagePath = storage_path('app/public/pictures');
+          $file->move($storagePath, $filename);
+          $post->picture = $fileLocation;
+      }
+      
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->save();

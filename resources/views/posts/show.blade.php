@@ -9,6 +9,10 @@
             <div class="post-box2">
             <big><b>{{ ucfirst($post->title) }}</b></big>
             <br>
+            @if ($post->picture)
+                <img src="{{ asset('storage/' . $post->picture) }}" class="picture">
+            @endif
+            <br>
             {{ $post->content }}
             <br>
             <br>
@@ -47,7 +51,7 @@
     @if (Auth::check())
         <form id="comment-form">
             @csrf
-            <textarea name="comment"></textarea>
+            <textarea name="comment" cols="72"></textarea>
             <input type="hidden" name="post_id" value="{{ $post->id }}">
             <input type="hidden" name="player_id" value="{{ auth()->user()->player->id }}">
             <button type="submit">Submit</button>
