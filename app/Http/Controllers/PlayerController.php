@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
+use App\Models\Comment;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,14 @@ class PlayerController extends Controller
         $players = Player::all();
         return view('players.index', ['players' => $players]);
     }
+
+    public function comments($id)
+    {
+        $comments = Comment::where('player_id', $id)->with('post')->paginate(10);
+        $player = Player::find($id);
+        return view('players.comments', ['player' => $player, 'comments' => $comments]);
+    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -65,7 +74,7 @@ class PlayerController extends Controller
     {
         $player = Player::findOrFail($id);
     
-        return view('players.edit', compact('player'));
+        return view('players.edit', ['player' => $player]);
     }
 
     /**

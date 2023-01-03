@@ -38,7 +38,15 @@ Route::get('/players/{id}/edit', [PlayerController::class, 'edit'])->name('playe
 
 Route::patch('players/{id}', [PlayerController::class, 'update'])->name('players.update');
 
+Route::get('/players/{id}/comments', [PlayerController::class, 'comments'])->name('players.comments');
+
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
+Route::patch('/comments/{id}', [CommentController::class, 'update'])->name('comments.update');
+
+Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+Route::get('/comments/{id}/edit', [CommentController::class, 'edit'])->name('comments.edit');
 
 Route::redirect('/dashboard', '/home');
 

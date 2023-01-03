@@ -45,6 +45,18 @@
                     <b>{{ $comment->player->alias }} - {{ ucfirst($comment->player->rank) }}</b>
                 </div>
                 </div>
+                <div style="text-align: left; display: flex; flex-direction: row;">
+                    @if (Auth::check())
+                        @if (Auth::user()->id === $comment->player_id)
+                        <form method="POST" action="/comments/{{ $comment->id }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <a href="{{route('comments.edit', $comment->id)}}" class="btn btn-primary" style="margin-left: 10px;">Edit</a>
+                        @endif
+                    @endif
+                </div>
             </li>
         @endforeach
     </ul>

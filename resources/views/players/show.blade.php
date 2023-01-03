@@ -15,6 +15,14 @@
     <img src="{{ asset('storage/' . $player->profile_picture) }}" alt="{{ $player->alias }}'s profile picture" class="profile-picture">
 </div>
 @section('content')
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ route('players.show', $player->id) }}">Posts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('players.comments', $player->id) }}">Comments</a>
+        </li>
+    </ul>
     <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;  align-items: center;">
         @foreach ($posts as $post)
         <li style="margin-bottom: 20px;">
