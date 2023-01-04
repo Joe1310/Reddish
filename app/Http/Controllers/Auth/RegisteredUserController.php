@@ -64,7 +64,6 @@ class RegisteredUserController extends Controller
             $player->profile_picture = $fileLocation;
         } else{
             $player->profile_picture = "/profile_pictures/default.png";
-            dd($player);
         }
         
         $user->player()->save($player);
