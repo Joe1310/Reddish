@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
+use App\Models\Player;
+use App\Models\User;
+use App\Notifications\NewComment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class CommentController extends Controller
 {
@@ -45,8 +50,14 @@ class CommentController extends Controller
         $comment->comment = $request->comment;
         $comment->post_id = $request->post_id;
         $comment->player_id = $request->player_id;
+
+        $post = Post::find($request->post_id);
+        $player = Player::find($post->player_id);
+        $user = User::find($player->user_id);
+        $user->notify(new NewComment($comment));
+
         $comment->save();
-    
+
         return response()->json(['comment' => $comment], 200);
     }
 
