@@ -23,7 +23,7 @@ class PlayerController extends Controller
 
     public function comments($id)
     {
-        $comments = Comment::where('player_id', $id)->with('post')->paginate(10);
+        $comments = Comment::where('player_id', $id)->with('post')->orderBy('id', 'desc')->paginate(10);
         $player = Player::find($id);
         return view('players.comments', ['player' => $player, 'comments' => $comments]);
     }
@@ -60,7 +60,7 @@ class PlayerController extends Controller
     {
         //
         $player = Player::find($id);
-        $posts = $player->posts()->paginate(10);
+        $posts = $player->posts()->orderBy('id', 'desc')->paginate(10);
         return view('players.show', ['player' => $player, 'posts' => $posts]);
     }
 
