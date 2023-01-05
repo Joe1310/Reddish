@@ -25,11 +25,6 @@ return new class extends Migration
         });
     }
 
-    public function isAdmin()
-    {
-        return $this->role === 'admin';
-    }
-
     /**
      * Reverse the migrations.
      *

@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Player::class);
     }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
 }
