@@ -111,3 +111,14 @@ body {
   justify-content: center;
   margin: auto;
 }
+
+.box{
+  border: 2mm ridge red;
+  background-color: lightgray;
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-self: center; 
+  color: red;
+  align-items: center;
+}

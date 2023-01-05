@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Player;
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
@@ -61,7 +62,9 @@ class PlayerController extends Controller
         //
         $player = Player::find($id);
         $posts = $player->posts()->orderBy('id', 'desc')->paginate(10);
-        return view('players.show', ['player' => $player, 'posts' => $posts]);
+        $user = User::find($player->user_id);
+        $isAdmin = $user->isAdmin();
+        return view('players.show', ['player' => $player, 'posts' => $posts, 'isAdmin' => $isAdmin]);
     }
 
     /**
