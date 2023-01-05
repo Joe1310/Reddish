@@ -4,6 +4,11 @@
 </head>
 @section('title', 'Player Profile')
 <h1 style="align-self: center">{{$player->alias}}'s profile</h1>
+@if ($isAdmin)
+    <div class="box">
+    <h1>ADMIN</h1>
+    </div>
+@endif
 @if (Auth::check())
     @if (Auth::user()->id === $player->user_id)
         <div class="d-flex justify-content-center">

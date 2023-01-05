@@ -26,7 +26,9 @@ class PlayerController extends Controller
     {
         $comments = Comment::where('player_id', $id)->with('post')->orderBy('id', 'desc')->paginate(10);
         $player = Player::find($id);
-        return view('players.comments', ['player' => $player, 'comments' => $comments]);
+        $user = User::find($player->user_id);
+        $isAdmin = $user->isAdmin();
+        return view('players.comments', ['player' => $player, 'comments' => $comments, 'isAdmin' => $isAdmin]);
     }
     
 
