@@ -18,11 +18,13 @@
                 var heroImg = 'https://cdn.cloudflare.steamstatic.com' + hero.img;
                 $('#hero-data').append(`
                     <tr>
+                        <td>
+                            <div class="hero-image">
+                                <img src="${heroImg}" alt="${hero.localized_name}" style="display: inline-block; width: 73.3px; height: 41.3px;">
+                            </div>
+                        </td>
                         <td style="vertical-align: middle;">
                             <div class="hero-container">
-                                <div class="hero-image">
-                                    <img src="${heroImg}" alt="${hero.localized_name}" style="display: inline-block; width: 73.3px; height: 41.3px;">
-                                </div>
                                 <div class="hero-content">
                                     <b>${hero.localized_name}</b>
                                 </div>
@@ -42,17 +44,19 @@
 <table>
     <thead>
         <tr>
-            <th style="text-align: center;">
+            <th>
+            </th>
+            <th style="text-align: left;">
                 Hero Name
             </th>
             <th style="text-align: center;">
-                Recent Professional Matches
+                Recent Professional<br>Matches
             </th>
             <th style="text-align: center;">
                 Recent Win Rate
             </th>
             <th style="text-align: center;">
-                Recent Times Banned
+                Recent Times<br>Banned
             </th>
         </tr>
     </thead>

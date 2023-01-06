@@ -34,7 +34,7 @@
             </div>
         </li>
     </ul>
-    <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;  align-items: center;">
+    <ul class="comment-section" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;  align-items: center;">
         <h5>Comments</h5>
         @foreach ($comments as $comment)
             <li class='comment-box'>
@@ -79,7 +79,11 @@
                     url: '/comments',
                     data: $(this).serialize(),
                     success: function(response) {
-                        location.reload();
+                        var newComment = response.comment;
+                        var newCommentElement = document.createElement("li");
+                        newCommentElement.innerHTML = newComment;
+                        newCommentElement.classList.add('comment-box');
+                        document.querySelector('#comments-section').appendChild(newCommentElement);
                     }
                 });
             });

@@ -130,7 +130,6 @@ table {
 }
 
 th, td {
-  padding-left: 20px;
   padding-right: 20px; 
   padding-bottom: 10px;
 }
@@ -139,8 +138,4 @@ th, td {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-
-.hero-image{
-  margin-right: 20px;
 }
