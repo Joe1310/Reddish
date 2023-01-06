@@ -122,3 +122,25 @@ body {
   color: red;
   align-items: center;
 }
+
+table {
+  text-align: center;
+  margin: 0 auto; 
+  border-collapse: collapse; 
+}
+
+th, td {
+  padding-left: 20px;
+  padding-right: 20px; 
+  padding-bottom: 10px;
+}
+
+.hero-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.hero-image{
+  margin-right: 20px;
+}

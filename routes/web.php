@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\HeroController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,8 @@ use App\Http\Controllers\CommentController;
 */
 
 Route::redirect('/', '/home');
+
+Route::get('/winrates', [HeroController::class, 'index'])->name('hero.index');
 
 Route::get('/home', [PostController::class, 'index'])->name('posts.index');
 
