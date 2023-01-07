@@ -10,7 +10,7 @@
             <big><b>{{ ucfirst($post->title) }}</b></big>
             <br>
             @if ($post->picture)
-                <img src="{{ asset('storage/' . $post->picture) }}" class="picture">
+                <img src="{{ asset('storage/' . $post->picture) }}" alt="{{$post->title}}" class="picture">
             @endif
             <br>
             {{ $post->content }}
