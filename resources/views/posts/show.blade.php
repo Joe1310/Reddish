@@ -22,7 +22,7 @@
             </div>
             <div style="text-align: left; display: flex; flex-direction: row;">
                 @if (Auth::check())
-                    @if (Auth::user()->id === $post->player_id)
+                    @if (Auth::user()->id === $post->player_id || Auth::user()->isAdmin())
                     <form method="POST" action="/posts/{{ $post->id }}">
                     @csrf
                     @method('DELETE')
