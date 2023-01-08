@@ -2,6 +2,7 @@
 <head>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
+@section('title', 'Hero Stats')
 <!-- Script to send a Get request to the Dota api to pull hero data-->
 <script>
     var xhr = new XMLHttpRequest();
@@ -40,7 +41,6 @@
     };
     xhr.send(`api_key=`); // dota api doesnt require an api key, so just send empty.
 </script>
-
 <table>
     <thead>
         <tr>

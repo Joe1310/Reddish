@@ -2,6 +2,7 @@
 <head>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
+@section('title','Create a New Post')
 @section('content')
     <h1>Create a New Post</h1>
     <form method="POST" action="/posts" enctype="multipart/form-data">

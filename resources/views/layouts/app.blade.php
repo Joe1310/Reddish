@@ -21,7 +21,7 @@
           <a class="nav-link" href="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/winrates">Hero Winrates</a>
+          <a class="nav-link" href="/winrates">Hero Stats</a>
         </li>
       @if (Auth::check())
         <!-- Display logout button for authenticated users -->

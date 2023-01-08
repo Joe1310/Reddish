@@ -83,7 +83,7 @@
                         var newCommentElement = document.createElement("li");
                         newCommentElement.innerHTML = newComment;
                         newCommentElement.classList.add('comment-box');
-                        document.querySelector('#comments-section').appendChild(newCommentElement);
+                        document.querySelector('#comments-box').appendChild(newCommentElement);
                     }
                 });
             });
