@@ -5,6 +5,7 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HeroController;
+use App\Http\HttpRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,10 @@ use App\Http\Controllers\HeroController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+app()->singleton('App\Http\HttpRequest', function($app){
+    return new HttpRequest("", "https://api.opendota.com/api/heroStats");
+});
 
 Route::redirect('/', '/home');
 
