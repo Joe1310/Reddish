@@ -12,7 +12,7 @@
 </head>
 <!-- Header -->
 <header>
-  <title>@yield('title')</title>
+  <title>@yield('title') - Reddish</title>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="/home">Reddish</a>
     <div class="collapse navbar-collapse" id="navbarNav">
