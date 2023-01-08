@@ -26,6 +26,7 @@ class HeroController extends Controller
             array_push($heroWinRates, (round($hero->pro_win / $hero->pro_pick, 4)*100)."%");
             array_push($heroProBans, $hero->pro_ban);
         }
-        return view('other.winrates', ['heroNames' => $heroNames, 'heroImages' => $heroImages, 'heroProPicks' => $heroProPicks, 'heroWinRates' => $heroWinRates, 'heroProBans' => $heroProBans]);
+        return view('other.winrates', ['heroNames' => $heroNames, 'heroImages' => $heroImages, 
+        'heroProPicks' => $heroProPicks, 'heroWinRates' => $heroWinRates, 'heroProBans' => $heroProBans]);
     }
 }

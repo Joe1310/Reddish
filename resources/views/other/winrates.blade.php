@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 @section('title', 'Hero Stats')
+@section('content')
 <table>
     <thead>
         <tr>
