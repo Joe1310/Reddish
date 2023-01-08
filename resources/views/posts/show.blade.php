@@ -79,11 +79,28 @@
                     url: '/comments',
                     data: $(this).serialize(),
                     success: function(response) {
-                        var newComment = response.comment;
+                        var newComment = response['comment'];
+                        var commentID = response['commentID'];
+                        var commentor = response['commentor'];
+                        var rank = response['rank'];
                         var newCommentElement = document.createElement("li");
-                        newCommentElement.innerHTML = newComment;
                         newCommentElement.classList.add('comment-box');
-                        document.querySelector('#comments-box').appendChild(newCommentElement);
+                        newCommentElement.innerHTML = 
+                            "<div class = 'comment'>" + newComment.comment +
+                            "<br>" +
+                            "<b> " + commentor + "-" + rank + "</b>" +
+                            "</div>" +
+                            "</div>" +
+                            "<div style='text-align: left; display: flex; flex-direction: row;'>" + 
+                            "<form method='POST' action='" + window.location.origin + "/comments/"+commentID+"'>"+
+                            "<input type='hidden' name='_token' value='s0zwkMiHWJyHX2KlaDkwnlVXx51teOhZsiC10pIt'>" + 
+                            "<input type='hidden' name='_method' value='DELETE'>" +
+                            "<button type='submit' class='btn btn-danger'>Delete</button>" +
+                            "</form>" + 
+                            "<a href='" + window.location.origin + "/comments/"+commentID+"/edit' class='btn btn-primary' style='margin-left: 10px;'>Edit</a>" +
+                            "</div>";
+                        document.querySelector('.comment-section').appendChild(newCommentElement);
+                        document.getElementById("comment-form").reset();
                     }
                 });
             });

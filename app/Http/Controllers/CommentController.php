@@ -56,9 +56,13 @@ class CommentController extends Controller
         $user = User::find($player->user_id);
         $user->notify(new NewComment($comment));
 
+        $commentor = Player::find($request->player_id);
+        $commentorName = $commentor->alias;
+        $rank = $commentor->rank;
+
         $comment->save();
 
-        return response()->json(['comment' => $comment], 200);
+        return response()->json(['comment' => $comment, 'commentor' => $commentorName, 'rank' => $rank, 'commentID' => $comment->id], 200);
     }
 
     /**
